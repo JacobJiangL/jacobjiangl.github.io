@@ -4,3 +4,10 @@ body {
   background-repeat: no-repeat;
 }
 
+.background-overlay {
+  background-image: url('../assets/images/overlay.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
