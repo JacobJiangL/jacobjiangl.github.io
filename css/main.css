@@ -1,4 +1,5 @@
 body {
   background-image: url('../assets/images/jumboBg.PNG');
+  background-size: cover;
 }
 
