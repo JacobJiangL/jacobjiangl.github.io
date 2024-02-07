@@ -1,0 +1,98 @@
+@import url('./constants.css');
+
+
+/* Description styles*/
+@keyframes typing {
+  0% { width: 0; border-right: .15em solid orange}
+  99% { width: 99%; border-right: .15em solid orange}
+  100% { width: 100%; border-right: 0px}
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: orange; }
+}
+.code-type {
+  margin-top: 80px;
+  width:fit-content;
+  padding-right: 30px;
+  position: absolute;
+  top: 97%;
+  left: -3%;
+  opacity: 0;
+}
+.code-type-bg {
+  --offset-top-bottom: 5px;
+  position: absolute;
+  transform: translateY(calc(var(--offset-top-bottom) * -1));
+  width: 100%;
+  
+  height: calc(100% + 2.5 * var(--offset-top-bottom));
+  
+  left: 5px;
+
+  
+  background-image: linear-gradient(to right, var(--bracket-color) 0%, var(--bracket-color-low-op) 50%, transparent 100%);
+  
+  z-index: 0;
+  opacity: 0.07;
+  border-radius: 8px;
+}
+
+.code-type h3 {
+  line-height: 2.1rem;
+  letter-spacing: 0.1ch;
+  display:inline;
+  position: relative;
+  max-width: fit-content;
+  left: 20px;
+  /* overflow: hidden; Ensures the content is not revealed until the animation */
+  border-right: 0; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0;
+  font-family: var(--descriptor-font);
+  font-weight: 300;
+  font-size: 1.5rem;
+  /* font-style: italic; */
+  
+  /* animation: 
+    typing 13s steps(40, end); */
+  box-sizing: border-box;
+  opacity: .835;
+  
+}
+
+.caret {  
+  border-right: .15em solid orange;
+  display: inline;
+  position: relative;
+  left: 20px;
+  font-size: 1.3rem;
+  /* height: 1.75rem; */
+  box-sizing: border-box;  
+}
+
+.caret-animation {
+  animation: blink-caret 1.33s step-end infinite;
+}
+
+
+.bracket-color {
+  color: var(--bracket-color);
+}
+
+.quote-mark {
+  /* color: var(--quote-color); */
+  color: var(--string-color);
+}
+
+.string-color {
+  color: var(--string-color);
+}
+
+.comma-color {
+  color: var(--quote-color);
+}
+
+.desc-odd-line {
+  color: var(--string-color-second);
+}

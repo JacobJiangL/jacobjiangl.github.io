@@ -1,0 +1,14 @@
+@import url('./constants.css');
+
+/* pretty universal styles that should just apply when given a corresponding class */
+
+
+/* .blur-slight {} */
+
+/* .blur {} */
+
+/* .blur-heavy {} */
+
+.out-flow {
+  position: fixed;
+}

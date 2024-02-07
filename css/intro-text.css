@@ -1,0 +1,84 @@
+@import url('./constants.css');
+
+.main-cont {
+  position: absolute;
+  top: 0;
+}
+
+.intro-div {
+  position: absolute;
+  top: 22.25vh;
+  left: calc(198px + max(calc(2vw + min(calc(-0.25 * (var(--optimal-width) - 100vw)), 0px)), -150px));
+  translate: 0px 0px;
+}
+
+.name-color {
+  color: var(--name-color);
+
+}
+
+.introduce {
+  font-size: calc(var(--name-size) * ((3.75 * 16) / 130.5));
+  font-family: var(--name-font), serif;
+  font-weight: calc(var(--name-weight) - 100);
+  padding-bottom: 1.75vh;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
+  opacity: 0;
+  left: -2vw;
+}
+.introduce span {
+  position: relative;
+  display: inline-block;
+}
+
+.first-name {
+  font-size: var(--name-size);
+  font-family: var(--name-font), serif;
+  font-weight: var(--name-weight);
+  position: relative;
+  line-height: var(--name-size);
+  display: inline-block;
+  margin-bottom: 0;
+  margin-top: 0px;
+  opacity: 0;
+}
+
+.last-name {
+  font-size: var(--name-size);
+  font-family: var(--name-font), serif;
+  font-weight: var(--name-weight);
+  margin-left: max(calc(8.5vw - 0.085 * 500px), 0px);
+  position: relative;
+  line-height: var(--name-size);
+  display: inline-block;
+  margin-bottom: 0;
+  margin-top: 15px;
+  opacity: 0;
+}
+
+.intro-bg::before {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: -10px;
+  width: 88%;
+  
+  height: 40%;
+  /* background-color: var(--intro-bg-color); */
+  background-image: linear-gradient(0.12turn, var(--intro-bg-color-2) 0%, var(--intro-bg-color) 40%, transparent 80%);
+  
+  z-index: -1;
+  opacity: 0.5;
+  border-radius: 8px;
+  /* filter: blur(2px); */
+  
+}
+h1.intro-bg::before {
+  height: 62%;
+  bottom: -10px;
+  width: 95%;
+  border-radius: 12px;
+  left: -10px;
+}

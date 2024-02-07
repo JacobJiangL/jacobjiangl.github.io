@@ -1,0 +1,50 @@
+/* const root vars */
+
+:root {
+  --font-sens: "Sens";
+  --font-poppins: "Poppins";
+  --font-m-plus-1: "M PLUS 1";
+  --font-dm-serif-display: "DM Serif Display";
+
+  --optimal-width: 1440px;
+
+  --font-serif: "Georgia", serif;
+  --font-sans-serif: var(--font-poppins), sans-serif;
+
+  /* Name and Intro */
+  --name-font: var(--font-sans-serif);
+  --name-weight: 400;
+  --name-color: hsl(270, 100%, 96%); 
+  /* --name-color: #fd92f6; */
+  --name-size: 8rem; /* 14.5rem */
+  /*--intro-bg-color: #ab5c9f; /*#733e8e rgb(131, 68, 145) */
+  --intro-bg-color: hsl(256, 39%, 41%);;
+  --intro-bg-color-2: hsla(326, 59%, 73%, 80%);
+  /* --testset: hsl(256, 34%, 51%);
+  --test: hsl(264, 64%, 10%); */
+
+  /* Nav */
+  --nav-color: hsla(326, 59%, 73%, 90%);
+  --nav-color-low-op: hsla(326, 59%, 73%, 0.5);
+  --nav-color-2: hsla(256, 37%, 42%, 0.8);
+  /* --asdfasdf: hsl(298, 23%, 45%); */
+  --nav-height: 60px;
+  --nav-edge-height: 6px;
+  --nav-item-width: 180px;
+  --nav-item-adjust: 2vw;
+
+  /* Description */
+  --descriptor-font: var(--font-m-plus-1), var(--font-sans-serif);
+    /* Bracket Color and bg*/
+  --bracket-color: hsla(32, 82%, 48%, 1);
+  --bracket-color-low-op: hsla(41, 80%, 50%, 30%);
+
+
+  --string-color: hsl(58, 100%, 97%);
+  --string-color-second: hsl(43, 100%, 89%);
+   
+  --quote-color: rgb(255, 175, 2);/* rgb(248, 248, 248); */
+
+  --descriptor-bg-color: rgb(10, 0, 26);
+  
+}
