@@ -1,3 +1,10 @@
+const topBackground = document.querySelector('.top-background');
+const topBackgroundOverlay = document.querySelector('.top-background-overlay');
+
+const slightBlurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur-slight'));
+const blurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur'));
+const heavyBlurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur-heavy'));
+
 function getOffset( el ) {
   // let _x = 0;
   // let _y = 0;
@@ -182,10 +189,10 @@ window.addEventListener("scroll", function(event) {
   if (offsetSize > 10) {
     // offsetSize = 10;
   }
-  this.document.querySelector('.top-background').style.top = `${offsetSize}vh`;
-  this.document.querySelector('.top-background').style.filter = `brightness(75%) hue-rotate(-10deg) blur(${blurSize}px)`;
-  this.document.querySelector('.top-background-overlay').style.top = `${overLayOffsetSize}vh`;
-  this.document.querySelector('.top-background-overlay').style.filter = `brightness(35%) hue-rotate(-3deg) saturate(0.95); blur(${overLayBlurSize}px)`;
+  topBackground.style.top = `${offsetSize}vh`;
+  topBackground.style.filter = `brightness(75%) hue-rotate(-10deg) blur(${blurSize}px)`;
+  topBackgroundOverlay.style.top = `${overLayOffsetSize}vh`;
+  topBackgroundOverlay.style.filter = `brightness(35%) hue-rotate(-3deg) saturate(0.95); blur(${overLayBlurSize}px)`;
   
 
   function blur(elem, multiplier, range=0) {
@@ -200,15 +207,15 @@ window.addEventListener("scroll", function(event) {
     elem.style.filter = ` blur(${blurSize}px)`;
   }
 
-  const slightBlurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur-slight'));
+  
   slightBlurElems.forEach((elem) => {
     blur(elem, 0.009, 0);
   })
-  const blurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur'));
+  
   blurElems.forEach((elem) => {
     blur(elem, 0.011, 20);
   })
-  const heavyBlurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur-heavy'));
+  
   heavyBlurElems.forEach((elem) => {
     blur(elem, 0.017, 35);
   })
