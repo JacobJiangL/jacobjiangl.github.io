@@ -11,6 +11,10 @@
   from, to { border-color: transparent; }
   50% { border-color: orange; }
 }
+@keyframes desc-fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 .code-type {
   margin-top: 80px;
   width:fit-content;
@@ -19,6 +23,8 @@
   top: 97%;
   left: -3%;
   opacity: 0;
+  animation: desc-fade 2s linear 2.2s;
+  animation-fill-mode: forwards;
 }
 .code-type-bg {
   --offset-top-bottom: 5px;

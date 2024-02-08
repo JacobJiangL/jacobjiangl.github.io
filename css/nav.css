@@ -130,8 +130,8 @@
 }
 
 @keyframes fade-in {
-  from {opacity: 50%;}
-  to {opacity: 100%;}
+  from {transform: translateY(-50px);}
+  to {transform: translateY(0px);}
 }
 
 .nav-link {

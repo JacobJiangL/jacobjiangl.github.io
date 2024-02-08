@@ -166,62 +166,7 @@ function deviateTypingSpeed(wpm) {
 
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  const initVal = 50;
-  function decay(x) {
-    const a = initVal; // Initial value
-    const b = 0.05; // Decay rate
-    return a * Math.exp(-b * x);
-  }
-  const introduce = document.getElementsByClassName("introduce")[0];
-  const introduceIm = document.getElementsByClassName("intro-second")[0];
-  const firstName = document.getElementsByClassName("first-name")[0];
-  const lastName = document.getElementsByClassName("last-name")[0];
-  const codeType = document.getElementsByClassName("code-type")[0];
-  
-  let trueTime = 0;
-  let timeIntro = 0;
-  let timeIntroSecond = -40;
-  let timeFirstName = -60;
-  let timeLastName = -60;
-  let timeCodeType = -90;
-  let offset = decay(trueTime);
-  let opacity = 0;
 
-  function paintOffsetOfElem(elem, time) {
-    offset = decay(Math.max(0, time));
-    opacity = time/100;
-    elem.style.transform = `translateX(${0.3 * offset}vh)`;
-    elem.style.opacity = `${opacity}`;
-  }
-  function paintOpacity(elem, time) {
-    opacity = time/100;
-    elem.style.opacity = `${opacity}`;
-  }
-
-  function paintOffset() {
-    
-    if(trueTime < 200) {
-      paintOffsetOfElem(introduce, timeIntro);
-
-      paintOffsetOfElem(introduceIm, timeIntroSecond);
-      
-      paintOffsetOfElem(firstName, timeFirstName);
-      
-      paintOffsetOfElem(lastName, timeLastName);
-
-      paintOpacity(codeType, timeCodeType);
-
-      trueTime++;
-      timeIntro++;
-      timeIntroSecond++;
-      timeFirstName++;
-      timeLastName++;
-      timeCodeType++;
-      
-      setTimeout(paintOffset, 20);
-    }
-  }
-  paintOffset();
   setTimeout(typeWriter, 2500);
 })
 
@@ -268,3 +213,62 @@ window.addEventListener("scroll", function(event) {
     blur(elem, 0.017, 35);
   })
 })
+
+
+
+// const initVal = 50;
+// function decay(x) {
+//   const a = initVal; // Initial value
+//   const b = 0.05; // Decay rate
+//   return a * Math.exp(-b * x);
+// }
+// const introduce = document.getElementsByClassName("introduce")[0];
+// const introduceIm = document.getElementsByClassName("intro-second")[0];
+// const firstName = document.getElementsByClassName("first-name")[0];
+// const lastName = document.getElementsByClassName("last-name")[0];
+// const codeType = document.getElementsByClassName("code-type")[0];
+
+// let trueTime = 0;
+// let timeIntro = 0;
+// let timeIntroSecond = -40;
+// let timeFirstName = -60;
+// let timeLastName = -60;
+// let timeCodeType = -90;
+// let offset = decay(trueTime);
+// let opacity = 0;
+
+// function paintOffsetOfElem(elem, time) {
+//   offset = decay(Math.max(0, time));
+//   opacity = time/100;
+//   elem.style.transform = `translateX(${0.3 * offset}vh)`;
+//   elem.style.opacity = `${opacity}`;
+// }
+// function paintOpacity(elem, time) {
+//   opacity = time/100;
+//   elem.style.opacity = `${opacity}`;
+// }
+
+// function paintOffset() {
+  
+//   if(trueTime < 50) {
+//     paintOffsetOfElem(introduce, timeIntro);
+
+//     paintOffsetOfElem(introduceIm, timeIntroSecond);
+    
+//     paintOffsetOfElem(firstName, timeFirstName);
+    
+//     paintOffsetOfElem(lastName, timeLastName);
+
+//     paintOpacity(codeType, timeCodeType);
+
+//     trueTime+=4;
+//     timeIntro+=4;
+//     timeIntroSecond+=4;
+//     timeFirstName+=4;
+//     timeLastName+=4;
+//     timeCodeType+=4;
+    
+//     setTimeout(paintOffset, 80);
+//   }
+// }
+// // paintOffset();
