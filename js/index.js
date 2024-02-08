@@ -220,11 +220,13 @@ if(true) {
       if(Math.abs(vhToPx(overlayOffsetSize) - getCurrentOffsetSizePx(topBackgroundOverlay)) >= 2) {
         topBackgroundOverlay.style.top = `${overlayOffsetSize}vh`;
       }
-      if(Math.abs(blurSize - getCurrentBlurSize(topBackground)) >= 2) {
-        topBackground.style.filter = `blur(${blurSize}px)`;
-      }
-      if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 2) {
-        topBackgroundOverlay.style.filter = `blur(${overlayBlurSize}px)`;
+      if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
+        if(Math.abs(blurSize - getCurrentBlurSize(topBackground)) >= ) {
+          topBackground.style.filter = `blur(${blurSize}px)`;
+        }
+        if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 2) {
+          topBackgroundOverlay.style.filter = `blur(${overlayBlurSize}px)`;
+        }
       }
       
       blurAll();
