@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 let platform = navigator?.userAgentData?.platform || navigator?.platform || 'unknown';
 
-let detectStupidIpadPro = (platform === 'MacIntel' && navigator.maxTouchPoints > 0) || platform === 'iPad';
+let detectStupidiPadPro = (platform === 'MacIntel' && navigator.maxTouchPoints > 0) || platform === 'iPad';
 
 if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
   /* Shift */
