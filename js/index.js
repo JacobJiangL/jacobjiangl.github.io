@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 })
 
 const introduce = document.getElementsByClassName("introduce")[0];
+introduce.innerHTML = "";
 introduce.innerHTML = navigator.userAgentData.platform + " " + navigator.maxTouchPoints;
 
 const detectStupidiPadPro = (navigator.userAgentData.platform === 'MacIntel' && navigator.maxTouchPoints > 0);
