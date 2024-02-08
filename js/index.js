@@ -213,18 +213,18 @@ if(true) {
       const blurSize = Math.round(scrollPosition * 0.02);
       const overlayBlurSize = Math.round(scrollPosition * 0.015);
       
-      if(Math.abs(vhToPx(offsetSize) - getCurrentOffsetSizePx(topBackground)) >= 2) {
+      if(Math.abs(vhToPx(offsetSize) - getCurrentOffsetSizePx(topBackground)) >= 1) {
         topBackground.style.top = `${offsetSize}vh`;
         console.log("did");
       }
-      if(Math.abs(vhToPx(overlayOffsetSize) - getCurrentOffsetSizePx(topBackgroundOverlay)) >= 2) {
+      if(Math.abs(vhToPx(overlayOffsetSize) - getCurrentOffsetSizePx(topBackgroundOverlay)) >= 1) {
         topBackgroundOverlay.style.top = `${overlayOffsetSize}vh`;
       }
       if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
-        if(Math.abs(blurSize - getCurrentBlurSize(topBackground)) >= ) {
+        if(Math.abs(blurSize - getCurrentBlurSize(topBackground)) >= 1) {
           topBackground.style.filter = `blur(${blurSize}px)`;
         }
-        if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 2) {
+        if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 1) {
           topBackgroundOverlay.style.filter = `blur(${overlayBlurSize}px)`;
         }
       }
@@ -264,8 +264,10 @@ function blur(elem, multiplier, range=0) {
   multiplier *= Math.max(Math.min(getHeight(elem), 150), 100) * 0.02;
   const blurSize = Math.max(relativeScroll * multiplier, 0);
 
-  if(Math.abs(getCurrentBlurSize(elem) - Math.round(blurSize)) >= 1) {
-    elem.style.filter = ` blur(${Math.round(blurSize)}px)`;
+  if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
+    if(Math.abs(getCurrentBlurSize(elem) - Math.round(blurSize)) >= 1) {
+      elem.style.filter = ` blur(${Math.round(blurSize)}px)`;
+    }
   }
 }
 
