@@ -200,7 +200,7 @@ let platform = navigator?.userAgentData?.platform || navigator?.platform || 'unk
 let detectStupidiPadPro = (platform === 'MacIntel' && navigator.maxTouchPoints > 0) || platform === 'iPad';
 
 
-if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
+if(true) {
   /* Shift */
   
   window.addEventListener("scroll", function(event) {
