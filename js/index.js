@@ -11,6 +11,8 @@ const isMobile = () => {
   );
 };
 
+let stopSpamming = 0;
+
 const mobile = isMobile();
 
 const topBackground = document.querySelector('.top-background');
@@ -186,55 +188,64 @@ function deviateTypingSpeed(wpm) {
 }
 
 
-
+let prevScroll = window.scrollY;
 document.addEventListener('DOMContentLoaded', function(event) {
 
   setTimeout(typeWriter, 2500);
 })
 
+const introduce = document.getElementsByClassName("introduce")[0];
+introduce.innerHTML = navigator.userAgentData.platform + " " + navigator.maxTouchPoints;
 
-const detectStupidiPadPro = (navigator.userAgentData.platform === 'MacIntel' && navigator.maxTouchPoints > 0)
+const detectStupidiPadPro = (navigator.userAgentData.platform === 'MacIntel' && navigator.maxTouchPoints > 0);
 if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
   /* Shift */
+  
   window.addEventListener("scroll", function(event) {
+    
     const scrollPosition = window.scrollY;
-    const offsetSize = scrollPosition * 0.03;
-    const overLayOffsetSize = scrollPosition * 0.02;
-    const blurSize = scrollPosition * 0.02
-    const overLayBlurSize = scrollPosition * 0.015
-    if (offsetSize > 10) {
-      // offsetSize = 10;
+
+    if (Math.abs(scrollPosition - prevScroll) > 5) {
+      prevScroll = scrollPosition;
+      stopSpamming = 1;
+      const offsetSize = scrollPosition * 0.03;
+      const overLayOffsetSize = scrollPosition * 0.02;
+      const blurSize = scrollPosition * 0.02
+      const overLayBlurSize = scrollPosition * 0.015
+      if (offsetSize > 10) {
+        // offsetSize = 10;
+      }
+      topBackground.style.top = `${offsetSize}vh`;
+      topBackground.style.filter = `brightness(75%) hue-rotate(-10deg) blur(${blurSize}px)`;
+      topBackgroundOverlay.style.top = `${overLayOffsetSize}vh`;
+      topBackgroundOverlay.style.filter = `brightness(35%) hue-rotate(-3deg) saturate(0.95); blur(${overLayBlurSize}px)`;
+      
+
+      function blur(elem, multiplier, range=0) {
+        // nav size
+        range += 60;
+
+        range += Math.max(250-getHeight(elem), 0) * 0.6;
+        let defaultPosition = getOffset(elem).top; 
+        const relativeScroll = -1 * defaultPosition + range;
+        multiplier *= Math.max(Math.min(getHeight(elem), 150), 100) * 0.02;
+        const blurSize = Math.max(relativeScroll * multiplier, 0);
+        elem.style.filter = ` blur(${blurSize}px)`;
+      }
+
+      
+      slightBlurElems.forEach((elem) => {
+        blur(elem, 0.009, 0);
+      })
+      
+      blurElems.forEach((elem) => {
+        blur(elem, 0.011, 20);
+      })
+      
+      heavyBlurElems.forEach((elem) => {
+        blur(elem, 0.017, 35);
+      })
     }
-    topBackground.style.top = `${offsetSize}vh`;
-    topBackground.style.filter = `brightness(75%) hue-rotate(-10deg) blur(${blurSize}px)`;
-    topBackgroundOverlay.style.top = `${overLayOffsetSize}vh`;
-    topBackgroundOverlay.style.filter = `brightness(35%) hue-rotate(-3deg) saturate(0.95); blur(${overLayBlurSize}px)`;
-    
-
-    function blur(elem, multiplier, range=0) {
-      // nav size
-      range += 60;
-
-      range += Math.max(250-getHeight(elem), 0) * 0.6;
-      let defaultPosition = getOffset(elem).top; 
-      const relativeScroll = -1 * defaultPosition + range;
-      multiplier *= Math.max(Math.min(getHeight(elem), 150), 100) * 0.02;
-      const blurSize = Math.max(relativeScroll * multiplier, 0);
-      elem.style.filter = ` blur(${blurSize}px)`;
-    }
-
-    
-    slightBlurElems.forEach((elem) => {
-      blur(elem, 0.009, 0);
-    })
-    
-    blurElems.forEach((elem) => {
-      blur(elem, 0.011, 20);
-    })
-    
-    heavyBlurElems.forEach((elem) => {
-      blur(elem, 0.017, 35);
-    })
   })
 }
 
