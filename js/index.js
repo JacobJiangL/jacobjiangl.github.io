@@ -194,11 +194,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
   setTimeout(typeWriter, 2500);
 })
 
-const introduce = document.getElementsByClassName("introduce")[0];
-introduce.innerHTML = "";
-introduce.innerHTML = navigator.userAgentData.platform + " " + navigator.maxTouchPoints;
+// i stg i hate ipad pro now
 
-const detectStupidiPadPro = (navigator.userAgentData.platform === 'MacIntel' && navigator.maxTouchPoints > 0);
+let platform = navigator?.userAgentData?.platform || navigator?.platform || 'unknown';
+
+let detectStupidIpadPro = (platform === 'MacIntel' && navigator.maxTouchPoints > 0) || platform === 'iPad';
+
 if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
   /* Shift */
   
