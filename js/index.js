@@ -22,6 +22,10 @@ const slightBlurElems = Array.prototype.slice.call(this.document.getElementsByCl
 const blurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur'));
 const heavyBlurElems = Array.prototype.slice.call(this.document.getElementsByClassName('blur-heavy'));
 
+const elem = document.getElementById("type-box-1");
+const elemTail = document.getElementById("type-box-1-tail");
+const caret = document.getElementById("caret-1");
+
 function getOffset( el ) {
   // let _x = 0;
   // let _y = 0;
@@ -46,12 +50,6 @@ function typeWriter() {
                     "\\s\\s\\s > ", "Junior at Worcester Academy.", "\\s",
                     "\\n\\s\\s\\s\\s > ", "Passionate hobbyist.", "\\s",
                     "\\n\\s\\s\\s\\s > ", "Addicted to chasing knowledge."];
-
-  const elem = document.getElementById("type-box-1");
-  const elemTail = document.getElementById("type-box-1-tail");
-  const caret = document.getElementById("caret-1");
-  
-  
   let textTyped = "";
   let textWrap = "";
   let textEnd = "";
@@ -189,6 +187,7 @@ function deviateTypingSpeed(wpm) {
 
 
 let prevScroll = window.scrollY;
+
 document.addEventListener('DOMContentLoaded', function(event) {
 
   setTimeout(typeWriter, 2500);
@@ -201,56 +200,111 @@ let platform = navigator?.userAgentData?.platform || navigator?.platform || 'unk
 let detectStupidiPadPro = (platform === 'MacIntel' && navigator.maxTouchPoints > 0) || platform === 'iPad';
 
 
-if(true) {
+if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
   /* Shift */
   
   window.addEventListener("scroll", function(event) {
     
     const scrollPosition = window.scrollY;
 
-    if (Math.abs(scrollPosition - prevScroll) > 10) {
+    if (true) {
+      const offsetSize = roundVh(scrollPosition * 0.03);
+      const overlayOffsetSize = roundVh(scrollPosition * 0.02, 8);
+      const blurSize = Math.round(scrollPosition * 0.02);
+      const overlayBlurSize = Math.round(scrollPosition * 0.015);
+      
+      if(Math.abs(vhToPx(offsetSize) - getCurrentOffsetSizePx(topBackground)) >= 2) {
+        topBackground.style.top = `${offsetSize}vh`;
+        console.log("did");
+      }
+      if(Math.abs(vhToPx(overlayOffsetSize) - getCurrentOffsetSizePx(topBackgroundOverlay)) >= 2) {
+        topBackgroundOverlay.style.top = `${overlayOffsetSize}vh`;
+      }
+      if(Math.abs(blurSize - getCurrentBlurSize(topBackground)) >= 1) {
+        topBackground.style.filter = `blur(${blurSize}px)`;
+      }
+      if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 1) {
+        topBackgroundOverlay.style.filter = `blur(${overlayBlurSize}px)`;
+      }
+      
+      blurAll();
+
       prevScroll = scrollPosition;
-      stopSpamming = 1;
-      const offsetSize = scrollPosition * 0.03;
-      const overLayOffsetSize = scrollPosition * 0.02;
-      const blurSize = scrollPosition * 0.02
-      const overLayBlurSize = scrollPosition * 0.015
-      if (offsetSize > 10) {
-        // offsetSize = 10;
-      }
-      topBackground.style.top = `${offsetSize}vh`;
-      topBackground.style.filter = `blur(${blurSize}px)`;
-      topBackgroundOverlay.style.top = `${overLayOffsetSize}vh`;
-      topBackgroundOverlay.style.filter = `blur(${overLayBlurSize}px)`;
-      
-
-      function blur(elem, multiplier, range=0) {
-        // nav size
-        range += 60;
-
-        range += Math.max(250-getHeight(elem), 0) * 0.6;
-        let defaultPosition = getOffset(elem).top; 
-        const relativeScroll = -1 * defaultPosition + range;
-        multiplier *= Math.max(Math.min(getHeight(elem), 150), 100) * 0.02;
-        const blurSize = Math.max(relativeScroll * multiplier, 0);
-        elem.style.filter = ` blur(${blurSize}px)`;
-      }
-
-      
-      slightBlurElems.forEach((elem) => {
-        blur(elem, 0.009, 0);
-      })
-      
-      blurElems.forEach((elem) => {
-        blur(elem, 0.011, 20);
-      })
-      
-      heavyBlurElems.forEach((elem) => {
-        blur(elem, 0.017, 35);
-      })
     }
   })
 }
+
+function blurAll() {
+
+  slightBlurElems.forEach((elem) => {
+    blur(elem, 0.009, 0);
+  })
+  
+  blurElems.forEach((elem) => {
+    blur(elem, 0.011, 20);
+  })
+  
+  heavyBlurElems.forEach((elem) => {
+    blur(elem, 0.017, 35);
+  })
+
+}
+
+function blur(elem, multiplier, range=0) {
+  // nav size
+  range += 60;
+
+  range += Math.max(250-getHeight(elem), 0) * 0.6;
+  let pos = getOffset(elem).top; 
+  
+  const relativeScroll = -1 * pos + range;
+  
+  multiplier *= Math.max(Math.min(getHeight(elem), 150), 100) * 0.02;
+  const blurSize = Math.max(relativeScroll * multiplier, 0);
+
+  if(Math.abs(getCurrentBlurSize(elem) - Math.round(blurSize)) >= 1) {
+    elem.style.filter = ` blur(${Math.round(blurSize)}px)`;
+  }
+}
+
+function roundToNearestFrac(x, frac) {
+  return Math.round(x * frac) / frac;
+}
+
+function getCurrentBlurSize(elem) {
+  const filterValue = elem.style.filter;
+  // Use regular expression to extract the blur size from the 'filter' value
+  const blurSizeMatch = filterValue.match(/blur\((\d+(?:\.\d+)?)(?:px)?\)/);
+  
+  if (blurSizeMatch && blurSizeMatch.length > 1) {
+      return parseInt(blurSizeMatch[1]);
+  } else {
+      return 0;
+  }
+}
+function getCurrentOffsetSizePx(elem) {
+  // Get the value of elem.style.top
+  const topValue = elem.style.top;
+
+  // Check if topValue is not empty
+  if (topValue) {
+      const pixels = vhToPx(parseFloat(topValue));
+      
+      return Math.round(pixels);
+  } else {
+      return 0;
+  }
+}
+function vhToPx(vh) {
+  return (vh / 100) * window.innerHeight;
+}
+function pxToVh(px) {
+  return (px * 100) / window.innerHeight;
+}
+function roundVh(vh) {
+  return pxToVh(Math.round(vhToPx(vh)));
+}
+
 
 
 // const initVal = 50;
