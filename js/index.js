@@ -199,7 +199,7 @@ let platform = navigator?.userAgentData?.platform || navigator?.platform || 'unk
 
 let detectStupidiPadPro = (platform === 'MacIntel' && navigator.maxTouchPoints > 0) || platform === 'iPad';
 
-
+let toggleMobileBlur = false;
 if(true) {
   /* Shift */
   
@@ -227,6 +227,14 @@ if(true) {
         if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 1) {
           topBackgroundOverlay.style.filter = `blur(${overlayBlurSize}px)`;
         }
+      } else if (scrollPosition > vhToPx(50) && !toggleMobileBlur) {
+        topBackground.style.filter = `blur(3px)`;
+        topBackgroundOverlay.style.filter = `blur(3px)`;
+        toggleMobileBlur = true;
+      } else if (scrollPosition < vhToPx(50) && toggleMobileBlur) {
+        topBackground.style.filter = ``;
+        topBackgroundOverlay.style.filter = ``;
+        toggleMobileBlur = false;
       }
       
       blurAll();
