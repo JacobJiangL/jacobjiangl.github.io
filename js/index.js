@@ -193,8 +193,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 })
 
 
-
-if(!mobile && !navigator.userAgentData.mobile) {
+const detectStupidiPadPro = (navigator.userAgentData.platform === 'MacIntel' && navigator.maxTouchPoints > 0)
+if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
   /* Shift */
   window.addEventListener("scroll", function(event) {
     const scrollPosition = window.scrollY;
