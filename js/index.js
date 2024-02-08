@@ -220,10 +220,10 @@ if(true) {
       if(Math.abs(vhToPx(overlayOffsetSize) - getCurrentOffsetSizePx(topBackgroundOverlay)) >= 2) {
         topBackgroundOverlay.style.top = `${overlayOffsetSize}vh`;
       }
-      if(Math.abs(blurSize - getCurrentBlurSize(topBackground)) >= 1) {
+      if(Math.abs(blurSize - getCurrentBlurSize(topBackground)) >= 2) {
         topBackground.style.filter = `blur(${blurSize}px)`;
       }
-      if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 1) {
+      if(Math.abs(overlayBlurSize - getCurrentBlurSize(topBackgroundOverlay)) >= 2) {
         topBackgroundOverlay.style.filter = `blur(${overlayBlurSize}px)`;
       }
       
