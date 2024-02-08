@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-if(!mobile) {
+if(!mobile && !navigator.userAgentData.mobile) {
   /* Shift */
   window.addEventListener("scroll", function(event) {
     const scrollPosition = window.scrollY;
