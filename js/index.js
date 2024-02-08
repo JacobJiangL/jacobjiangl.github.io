@@ -208,7 +208,7 @@ if(true) {
     
     const scrollPosition = window.scrollY;
 
-    if (true) {
+    if (Math.abs(scrollPosition - prevScroll) > 10) {
       prevScroll = scrollPosition;
       stopSpamming = 1;
       const offsetSize = scrollPosition * 0.03;
