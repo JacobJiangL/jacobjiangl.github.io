@@ -200,111 +200,111 @@ let platform = navigator?.userAgentData?.platform || navigator?.platform || 'unk
 
 let detectStupidiPadPro = (platform === 'MacIntel' && navigator.maxTouchPoints > 0) || platform === 'iPad';
 
-// if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
-//   /* Shift */
+if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
+  /* Shift */
   
-//   window.addEventListener("scroll", function(event) {
+  window.addEventListener("scroll", function(event) {
     
-//     const scrollPosition = window.scrollY;
+    const scrollPosition = window.scrollY;
 
-//     if (Math.abs(scrollPosition - prevScroll) > 5) {
-//       prevScroll = scrollPosition;
-//       stopSpamming = 1;
-//       const offsetSize = scrollPosition * 0.03;
-//       const overLayOffsetSize = scrollPosition * 0.02;
-//       const blurSize = scrollPosition * 0.02
-//       const overLayBlurSize = scrollPosition * 0.015
-//       if (offsetSize > 10) {
-//         // offsetSize = 10;
-//       }
-//       topBackground.style.top = `${offsetSize}vh`;
-//       topBackground.style.filter = `brightness(75%) hue-rotate(-10deg) blur(${blurSize}px)`;
-//       topBackgroundOverlay.style.top = `${overLayOffsetSize}vh`;
-//       topBackgroundOverlay.style.filter = `brightness(35%) hue-rotate(-3deg) saturate(0.95); blur(${overLayBlurSize}px)`;
+    if (Math.abs(scrollPosition - prevScroll) > 5) {
+      prevScroll = scrollPosition;
+      stopSpamming = 1;
+      const offsetSize = scrollPosition * 0.03;
+      const overLayOffsetSize = scrollPosition * 0.02;
+      const blurSize = scrollPosition * 0.02
+      const overLayBlurSize = scrollPosition * 0.015
+      if (offsetSize > 10) {
+        // offsetSize = 10;
+      }
+      topBackground.style.top = `${offsetSize}vh`;
+      topBackground.style.filter = `blur(${blurSize}px)`;
+      topBackgroundOverlay.style.top = `${overLayOffsetSize}vh`;
+      topBackgroundOverlay.style.filter = `blur(${overLayBlurSize}px)`;
       
 
-//       function blur(elem, multiplier, range=0) {
-//         // nav size
-//         range += 60;
+      function blur(elem, multiplier, range=0) {
+        // nav size
+        range += 60;
 
-//         range += Math.max(250-getHeight(elem), 0) * 0.6;
-//         let defaultPosition = getOffset(elem).top; 
-//         const relativeScroll = -1 * defaultPosition + range;
-//         multiplier *= Math.max(Math.min(getHeight(elem), 150), 100) * 0.02;
-//         const blurSize = Math.max(relativeScroll * multiplier, 0);
-//         elem.style.filter = ` blur(${blurSize}px)`;
-//       }
+        range += Math.max(250-getHeight(elem), 0) * 0.6;
+        let defaultPosition = getOffset(elem).top; 
+        const relativeScroll = -1 * defaultPosition + range;
+        multiplier *= Math.max(Math.min(getHeight(elem), 150), 100) * 0.02;
+        const blurSize = Math.max(relativeScroll * multiplier, 0);
+        elem.style.filter = ` blur(${blurSize}px)`;
+      }
 
       
-//       slightBlurElems.forEach((elem) => {
-//         blur(elem, 0.009, 0);
-//       })
+      slightBlurElems.forEach((elem) => {
+        blur(elem, 0.009, 0);
+      })
       
-//       blurElems.forEach((elem) => {
-//         blur(elem, 0.011, 20);
-//       })
+      blurElems.forEach((elem) => {
+        blur(elem, 0.011, 20);
+      })
       
-//       heavyBlurElems.forEach((elem) => {
-//         blur(elem, 0.017, 35);
-//       })
-//     }
-//   })
+      heavyBlurElems.forEach((elem) => {
+        blur(elem, 0.017, 35);
+      })
+    }
+  })
+}
+
+
+// const initVal = 50;
+// function decay(x) {
+//   const a = initVal; // Initial value
+//   const b = 0.05; // Decay rate
+//   return a * Math.exp(-b * x);
+// }
+// const introduce = document.getElementsByClassName("introduce")[0];
+// const introduceIm = document.getElementsByClassName("intro-second")[0];
+// const firstName = document.getElementsByClassName("first-name")[0];
+// const lastName = document.getElementsByClassName("last-name")[0];
+// const codeType = document.getElementsByClassName("code-type")[0];
+
+// let trueTime = 0;
+// let timeIntro = 0;
+// let timeIntroSecond = -40;
+// let timeFirstName = -60;
+// let timeLastName = -60;
+// let timeCodeType = -90;
+// let offset = decay(trueTime);
+// let opacity = 0;
+
+// function paintOffsetOfElem(elem, time) {
+//   offset = decay(Math.max(0, time));
+//   opacity = time/100;
+//   elem.style.transform = `translateX(${0.3 * offset}vh)`;
+//   elem.style.opacity = `${opacity}`;
+// }
+// function paintOpacity(elem, time) {
+//   opacity = time/100;
+//   elem.style.opacity = `${opacity}`;
 // }
 
-
-// // const initVal = 50;
-// // function decay(x) {
-// //   const a = initVal; // Initial value
-// //   const b = 0.05; // Decay rate
-// //   return a * Math.exp(-b * x);
-// // }
-// // const introduce = document.getElementsByClassName("introduce")[0];
-// // const introduceIm = document.getElementsByClassName("intro-second")[0];
-// // const firstName = document.getElementsByClassName("first-name")[0];
-// // const lastName = document.getElementsByClassName("last-name")[0];
-// // const codeType = document.getElementsByClassName("code-type")[0];
-
-// // let trueTime = 0;
-// // let timeIntro = 0;
-// // let timeIntroSecond = -40;
-// // let timeFirstName = -60;
-// // let timeLastName = -60;
-// // let timeCodeType = -90;
-// // let offset = decay(trueTime);
-// // let opacity = 0;
-
-// // function paintOffsetOfElem(elem, time) {
-// //   offset = decay(Math.max(0, time));
-// //   opacity = time/100;
-// //   elem.style.transform = `translateX(${0.3 * offset}vh)`;
-// //   elem.style.opacity = `${opacity}`;
-// // }
-// // function paintOpacity(elem, time) {
-// //   opacity = time/100;
-// //   elem.style.opacity = `${opacity}`;
-// // }
-
-// // function paintOffset() {
+// function paintOffset() {
   
-// //   if(trueTime < 50) {
-// //     paintOffsetOfElem(introduce, timeIntro);
+//   if(trueTime < 50) {
+//     paintOffsetOfElem(introduce, timeIntro);
 
-// //     paintOffsetOfElem(introduceIm, timeIntroSecond);
+//     paintOffsetOfElem(introduceIm, timeIntroSecond);
     
-// //     paintOffsetOfElem(firstName, timeFirstName);
+//     paintOffsetOfElem(firstName, timeFirstName);
     
-// //     paintOffsetOfElem(lastName, timeLastName);
+//     paintOffsetOfElem(lastName, timeLastName);
 
-// //     paintOpacity(codeType, timeCodeType);
+//     paintOpacity(codeType, timeCodeType);
 
-// //     trueTime+=4;
-// //     timeIntro+=4;
-// //     timeIntroSecond+=4;
-// //     timeFirstName+=4;
-// //     timeLastName+=4;
-// //     timeCodeType+=4;
+//     trueTime+=4;
+//     timeIntro+=4;
+//     timeIntroSecond+=4;
+//     timeFirstName+=4;
+//     timeLastName+=4;
+//     timeCodeType+=4;
     
-// //     setTimeout(paintOffset, 80);
-// //   }
-// // }
-// // // paintOffset();
+//     setTimeout(paintOffset, 80);
+//   }
+// }
+// // paintOffset();

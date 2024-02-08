@@ -24,9 +24,14 @@
   --test: hsl(264, 64%, 10%); */
 
   /* Nav */
-  --nav-color: hsla(326, 59%, 73%, 90%);
+  --nav-color: hsla(326, 59%, 73%, 0.9);
   --nav-color-low-op: hsla(326, 59%, 73%, 0.5);
   --nav-color-2: hsla(256, 37%, 42%, 0.8);
+  
+  
+  --nav-edge-color: rgba(198, 100, 155, 0.72);
+  --nav-edge-color-2: rgba(63, 38, 134, 0.64);
+
   /* --asdfasdf: hsl(298, 23%, 45%); */
   --nav-height: 60px;
   --nav-edge-height: 6px;

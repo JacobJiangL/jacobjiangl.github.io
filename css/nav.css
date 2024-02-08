@@ -25,7 +25,6 @@
   height: calc(var(--nav-height));
   position: fixed;
   z-index: -3;
-  /* opacity: 0.7; */
 }
 .navbar-bg::before {
   height: var(--nav-edge-height);
@@ -34,9 +33,8 @@
   position: fixed;
   top: calc(var(--nav-height));
   z-index: -4;
-  background-image: linear-gradient(to right, var(--nav-color) 0%, var(--nav-color-2) 35%, var(--nav-color-2) 65%, var(--nav-color) 90%);
-  filter: brightness(0.8) saturate(1.5);
-  opacity: 0.8;
+  background-image: linear-gradient(to right, var(--nav-edge-color) 0%, var(--nav-edge-color-2) 50%, var(--nav-edge-color) 90%);
+  
 }
 .navbar-bg::after {
   transform: translateY(calc(var(--nav-height) - 25px));
@@ -50,7 +48,6 @@
   top: 0;
   opacity: 0.2;
   transition: all 0.2s;
-  /* filter: blur(1px); */
 }
 
 .navbar-brand {
@@ -110,7 +107,6 @@
 .nav-item::after {
   transform: translateX(calc((var(--nav-item-width) + var(--nav-item-adjust)) / 2 - 50%));
   background-image: linear-gradient(to right, var(--bracket-color) 0%, var(--quote-color) 50%, var(--bracket-color)) !important;
-  filter: brightness(0.7);
   width: 0vw;
   content: "";
   position: fixed;
