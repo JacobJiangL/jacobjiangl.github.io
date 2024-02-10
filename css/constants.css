@@ -23,12 +23,12 @@
   
 
   /* Nav */
-  --nav-color-2: hsla(326, 59%, 73%, 0.9);
+  --nav-color-2: rgba(227, 146, 192, 0.9);
   --nav-color-low-op: hsla(326, 59%, 73%, 0.5);
   --nav-color: rgba(89, 67, 147, 0.9);
     
-  --nav-edge-color-2: rgba(198, 100, 155, 0.72);
-  --nav-edge-color: rgba(63, 38, 134, 0.64);
+  --nav-edge-color-2: #c6649bb8;
+  --nav-edge-color: #3f2686a3;
 
   --nav-height: 60px;
   --nav-edge-height: 6px;
@@ -62,7 +62,7 @@
   /* --transition-color: rgb(70, 51, 120); */
 
   --transition-color-RGB: 236, 163, 205;
-  --transition-color: rgb(236, 163, 205);
+  --transition-color: #eca3cd;
 
   /* dark mode */
   --body-color-1-RGB: 200, 121, 200;
