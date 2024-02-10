@@ -17,8 +17,8 @@
 
 .intro-div {
   position: absolute;
-  top: 22.25vh;
-  left: calc(198px + max(calc(2vw + min(calc(-0.25 * (var(--optimal-width) - 100vw)), 0px)), -150px));
+  top: 24.25vh;
+  left: calc(198px + max(calc(6vw + min(calc(-0.25 * (var(--optimal-width) - 100vw)), 0px)), -150px));
   translate: 0px 0px;
 }
 
@@ -55,6 +55,7 @@
   font-size: var(--name-size);
   font-family: var(--name-font), serif;
   font-weight: var(--name-weight);
+  margin-left: max(calc(4vw - 0.085 * 500px), 0px);
   position: relative;
   line-height: var(--name-size);
   display: inline-block;
@@ -69,7 +70,7 @@
   font-size: var(--name-size);
   font-family: var(--name-font), serif;
   font-weight: var(--name-weight);
-  margin-left: max(calc(8.5vw - 0.085 * 500px), 0px);
+  margin-left: max(calc(10vw - 0.085 * 500px), 0px);
   position: relative;
   line-height: var(--name-size);
   display: inline-block;

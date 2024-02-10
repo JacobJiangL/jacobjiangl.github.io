@@ -26,6 +26,9 @@ const elem = document.getElementById("type-box-1");
 const elemTail = document.getElementById("type-box-1-tail");
 const caret = document.getElementById("caret-1");
 
+const transition = document.querySelector('.transition');
+const transitionOpacity = document.querySelector('.transition-opacity');
+
 function getOffset( el ) {
   // let _x = 0;
   // let _y = 0;
@@ -231,6 +234,11 @@ if(true) {
       
       blurAll();
 
+      // const opacity = (document.documentElement.clientHeight - scrollPosition * 2) / document.documentElement.clientHeight;
+      // if(Math.abs(opacity - getCurrentOpacity(transition)) >= 0.05) {
+      //   transition.style.opacity = `${opacity}`;
+      // }
+
       prevScroll = scrollPosition;
     }
   })
@@ -265,8 +273,8 @@ function blur(elem, multiplier, range=0) {
   const blurSize = Math.max(relativeScroll * multiplier, 0);
 
   if(!mobile && !navigator.userAgentData.mobile && !detectStupidiPadPro) {
-    if(Math.abs(getCurrentBlurSize(elem) - Math.round(blurSize)) >= 1) {
-      elem.style.filter = ` blur(${Math.round(blurSize)}px)`;
+    if(Math.abs(getCurrentBlurSize(elem) - roundToNearestFrac(blurSize, 1)) >= 0.5) {
+      elem.style.filter = ` blur(${roundToNearestFrac(blurSize, 1)}px)`;
     }
   }
 }
@@ -296,14 +304,25 @@ function getCurrentOffsetSizePx(elem) {
       
       return Math.round(pixels);
   } else {
-      return 0;
+      return 1;
   }
 }
+
+function getCurrentOpacity(elem) {
+  const opacity = elem.style.opacity;
+  console.log(opacity);
+  if(opacity) {
+    return parseFloat(opacity);
+  } else {
+    return 1;
+  }
+}
+
 function vhToPx(vh) {
-  return (vh / 100) * window.innerHeight;
+  return (vh / 100) * document.documentElement.clientHeight;
 }
 function pxToVh(px) {
-  return (px * 100) / window.innerHeight;
+  return (px * 100) / document.documentElement.clientHeight;
 }
 function roundVh(vh) {
   return pxToVh(Math.round(vhToPx(vh)));

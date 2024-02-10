@@ -14,25 +14,22 @@
   /* Name and Intro */
   --name-font: var(--font-sans-serif);
   --name-weight: 400;
-  --name-color: hsl(270, 100%, 96%); 
+  --name-color: rgb(245, 235, 255); 
   /* --name-color: #fd92f6; */
-  --name-size: 8rem; /* 14.5rem */
+  --name-size: 7rem; /* 14.5rem */
   /*--intro-bg-color: #ab5c9f; /*#733e8e rgb(131, 68, 145) */
-  --intro-bg-color: hsl(256, 39%, 41%);;
-  --intro-bg-color-2: hsla(326, 59%, 73%, 80%);
-  /* --testset: hsl(256, 34%, 51%);
-  --test: hsl(264, 64%, 10%); */
+  --intro-bg-color-2: rgb(86, 64, 145, 100%);
+  --intro-bg-color: hsla(326, 59%, 73%, 60%);
+  
 
   /* Nav */
-  --nav-color: hsla(326, 59%, 73%, 0.9);
+  --nav-color-2: hsla(326, 59%, 73%, 0.9);
   --nav-color-low-op: hsla(326, 59%, 73%, 0.5);
-  --nav-color-2: hsla(256, 37%, 42%, 0.8);
-  
-  
-  --nav-edge-color: rgba(198, 100, 155, 0.72);
-  --nav-edge-color-2: rgba(63, 38, 134, 0.64);
+  --nav-color: rgba(89, 67, 147, 0.9);
+    
+  --nav-edge-color-2: rgba(198, 100, 155, 0.72);
+  --nav-edge-color: rgba(63, 38, 134, 0.64);
 
-  /* --asdfasdf: hsl(298, 23%, 45%); */
   --nav-height: 60px;
   --nav-edge-height: 6px;
   --nav-item-width: 180px;
@@ -51,5 +48,24 @@
   --quote-color: rgb(255, 175, 2);/* rgb(248, 248, 248); */
 
   --descriptor-bg-color: rgb(10, 0, 26);
+  --description-font-size: 1.3rem;
   
+
+  /* Main Body */
+
+
+  /* light mode*/
+  --body-color-1-RGB: 255, 175, 221;
+  --body-color-1: rgb(255, 175, 221);
+
+  /* --transition-color-RGB: 70, 51, 120; */
+  /* --transition-color: rgb(70, 51, 120); */
+
+  --transition-color-RGB: 236, 163, 205;
+  --transition-color: rgb(236, 163, 205);
+
+  /* dark mode */
+  --body-color-1-RGB: 200, 121, 200;
+  --body-color-1: rgb(182, 119, 183);
+  --body-color-2-RGB: rgb(63, 38, 134);
 }

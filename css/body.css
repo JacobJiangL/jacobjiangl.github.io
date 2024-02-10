@@ -1,0 +1,65 @@
+@import url('./constants.css');
+
+
+/* 0.019 0.037 0.075 0.15 0.3 1 */
+.transition {
+  --transition-height: 3vh;
+  background-image: linear-gradient(to top,
+    rgba(var(--transition-color-RGB), 1) 0%, 
+    rgba(var(--transition-color-RGB), 0.3) 50%,
+    rgba(var(--transition-color-RGB), 0.15) 65%,
+    rgba(var(--transition-color-RGB), 0.075) 75.5%,
+    rgba(var(--transition-color-RGB), 0.037) 82.85%,
+    rgba(var(--transition-color-RGB), 0.019) 88%,
+    transparent 100%
+  );
+  height: var(--transition-height);
+  width: 100vw;
+  position: absolute;
+  background-position-y: -2px;
+  top: calc(100vh - var(--transition-height) + 2px);
+  opacity: 0.5;
+}
+/* .transition-opacity {
+  --transition-height: 3vh;
+  height: var(--transition-height);
+  width: 100vw;
+  position: absolute;
+  top: calc(100vh - var(--transition-height));
+  background-color: var(--body-color-1);
+  opacity: 0;
+} */
+
+
+/* .main-body {
+  background-image: url('../assets/images/backgroundTile.png');
+  background-repeat: repeat-y;
+  background-size: contain;
+  height: 100%;
+  overflow: hidden;
+} */
+.main-body {
+  background: linear-gradient(-30deg, #3f3784 0%, #B363A1 50%, #de72ca 550%, #3f3784 100%);
+  background-size: 400% 400%;
+  animation: gradient 5s infinite;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes gradient {
+  0% {
+    background: linear-gradient(-30deg, #3f3784 0%, #B363A1 50%, #de72ca 550%, #3f3784 100%);
+    background-position: 0% 50%;
+  }
+  50% {
+    background: linear-gradient(150deg, #3f3784 0%, #B363A1 50%, #de72ca 550%, #3f3784 100%);
+    background-position: 100% 50%;
+  }
+  100% {
+    background: linear-gradient(330deg, #3f3784 0%, #B363A1 50%, #de72ca 550%, #3f3784 100%);
+    background-position: 0% 50%;
+  }
+}

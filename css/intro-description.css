@@ -45,7 +45,7 @@
 }
 
 .code-type h3 {
-  line-height: 2.1rem;
+  line-height: calc(var(--description-font-size) * 1.35);
   letter-spacing: 0.1ch;
   display:inline;
   position: relative;
@@ -57,7 +57,7 @@
   margin: 0;
   font-family: var(--descriptor-font);
   font-weight: 300;
-  font-size: 1.5rem;
+  font-size: var(--description-font-size);
   /* font-style: italic; */
   
   /* animation: 
@@ -72,7 +72,7 @@
   display: inline;
   position: relative;
   left: 20px;
-  font-size: 1.3rem;
+  font-size: calc(var(--description-font-size) - 0.2rem);
   /* height: 1.75rem; */
   box-sizing: border-box;  
 }

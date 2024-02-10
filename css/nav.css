@@ -20,7 +20,7 @@
 }
 
 .navbar-bg {
-  background-image: linear-gradient(to right, var(--nav-color) 0%, var(--nav-color-2) 35%, var(--nav-color-2) 65%, var(--nav-color) 90%);
+  background-image: linear-gradient(to right, var(--nav-color) 0%, var(--nav-color-2) 35%, var(--nav-color-2) 65%, var(--nav-color) 95%);
   width: 100%;
   height: calc(var(--nav-height));
   position: fixed;
@@ -33,7 +33,7 @@
   position: fixed;
   top: calc(var(--nav-height));
   z-index: -4;
-  background-image: linear-gradient(to right, var(--nav-edge-color) 0%, var(--nav-edge-color-2) 50%, var(--nav-edge-color) 90%);
+  background-image: linear-gradient(to right, var(--nav-edge-color) 0%, var(--nav-edge-color-2) 50%, var(--nav-edge-color) 100%);
   
 }
 .navbar-bg::after {
@@ -52,15 +52,15 @@
 
 .navbar-brand {
   margin-left: 20px;
-  filter: saturate(1.1) hue-rotate(-30deg);
+  filter: saturate(1.1) hue-rotate(5deg);
   opacity: 0.8;
 }
 
 @keyframes rgb {
-  from {filter: saturate(1.1) hue-rotate(-30deg);}
-  50% {filter: saturate(1.1) hue-rotate(150deg) brightness(1.15);}
-  75% {filter: saturate(1.1) hue-rotate(240deg) brightness(1.15)}
-  to {filter: saturate(1.1) hue-rotate(330deg);}
+  from {filter: saturate(1.1) hue-rotate(5deg);}
+  50% {filter: saturate(1.1) hue-rotate(185deg) brightness(1.15);}
+  75% {filter: saturate(1.1) hue-rotate(275deg) brightness(1.15)}
+  to {filter: saturate(1.1) hue-rotate(365deg);}
 }
 
 .navbar-brand:hover {
@@ -82,8 +82,10 @@
 }
 
 .nav-item::before {
+
   /* background-image: linear-gradient(to right, transparent 0%, var(--nav-color-low-op) 30%, var(--nav-color-low-op) 70%, transparent 100%) !important; */
-  transform: translateX(calc((var(--nav-item-width) + var(--nav-item-adjust)) / 2 - 50%)) translateY(calc(var(--nav-height) - 100%));
+  
+  transform: translateY(calc(var(--nav-height) - 100%));
   margin: auto;
   background-image: linear-gradient(to bottom, transparent 0%, var(--nav-color) 80%) !important;
   /* background-color: rgb(52, 37, 107); */
@@ -122,6 +124,7 @@
   /* height: var(--nav-edge-height); */
   
   opacity: 0.3;
+  filter: brightness(0.75) saturate(1.6);
 
 }
 
@@ -154,7 +157,7 @@
   --nav-link-hover-color: rgb(250, 236, 250);
   --nav-text-glow-color: var(--nav-color-2);
   color: var(--nav-link-hover-color) !important;
-  text-shadow: 0 1px 5px var(--nav-text-glow-color), 0 1px 5px var(--nav-text-glow-color) !important;
+  /* text-shadow: 0 1px 5px var(--nav-text-glow-color), 0 1px 5px var(--nav-text-glow-color) !important; */
   font-size: calc(var(--nav-font-size) + 0.1rem); 
   font-weight: 400;
   opacity: 1;

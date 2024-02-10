@@ -35,6 +35,7 @@
 
 .top-background-overlay {
   background-image: url('../assets/images/overlay.png');
+  /* background-image: linear-gradient(to right, rgba(15, 6, 38, 0.9) 0%, rgba(15, 6, 38, 1) 20%, rgba(15, 6, 38, 0.8) 40%, rgba(15, 6, 38, 0.5) 60%, rgba(15, 6, 38, 0.3) 80%, transparent 100%); */
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -5;
@@ -44,9 +45,21 @@
   /* top: var(--nav-height); */
   top: 0px;
   left: max(min(calc(-0.25 * (var(--optimal-width) - 100vw)), 0px), -150px);
-  
+  opacity: 0.95;
 }
-
+.top-background-gradient {
+  background-image: linear-gradient(to right, rgba(15, 6, 38, 0.6) 0%, rgba(15, 6, 38, 1) 20%, rgba(15, 6, 38, 0.8) 40%, rgba(15, 6, 38, 0.5) 60%, rgba(15, 6, 38, 0.2) 80%, rgba(15, 6, 38, 0.8) 90%, rgba(15, 6, 38, 1) 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -5;
+  height: 102%;
+  width: calc(10px + 100vw + -1 * max(min(calc(-0.25 * (var(--optimal-width) - 100vw)), 0px), -150px));
+  position: absolute;
+  /* top: var(--nav-height); */
+  top: 0px;
+  left: max(min(calc(-0.25 * (var(--optimal-width) - 100vw)), 0px), -150px);
+  opacity: 0.2;
+}
 
 
 /* .top-background-overlay-front {
